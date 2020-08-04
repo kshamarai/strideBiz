@@ -1,0 +1,33 @@
+
+
+<div class="login-container">
+  <div class="login-content">
+    <mat-toolbar class="login-toolbar" color="primary">My App</mat-toolbar>
+    <mat-card>
+      uesername: kshama<br>
+      password:123456
+      <form name="loginForm" [formGroup]="loginForm" novalidate (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <p *ngIf="flagsCheck">{{message}}</p>
+       </div>
+        <mat-form-field>
+          <mat-icon matPrefix>person_outline</mat-icon>
+          <input autofocus type="text" matInput placeholder="Username" formControlName="username" [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
+          <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+            <div *ngIf="f.username.errors.required">Username is required</div>
+        </div>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-icon matPrefix>lock_outline</mat-icon>
+          <input type="password" autocomplete="false" matInput placeholder="Password" formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" >
+          <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+            <div *ngIf="f.password.errors.required">Password is required</div>
+        </div>
+        </mat-form-field>
+
+        <button [disabled]="loginForm.invalid" type="submit" mat-raised-button color="primary" (click) ="checkLogin()">Login</button>
+      </form>
+    </mat-card>
+  </div>
+</div>

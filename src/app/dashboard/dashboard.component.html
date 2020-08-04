@@ -1,0 +1,86 @@
+<div class="chart p-4">
+    <div class="d-flex justify-content-between pb-3">
+        <h4>Chart</h4>
+        <button mat-raised-button color="primary" class="float-right" routerLink="/login">Logout</button>
+    </div>
+<div class="row">
+    <div class="col-md-6 pb-4">
+        <mat-card>
+<h4 style="text-align:center;padding-bottom:17px;">Pie Chart For Browser usage</h4>
+
+<div style="display: block" >
+
+<canvas baseChart
+        [data]="pieChartData"
+        [labels]="pieChartLabels"
+        [chartType]="pieChartType"
+        (chartHover)="chartHovered($event)"
+        (chartClick)="chartClicked($event)"></canvas>
+</div>
+</mat-card>
+</div>
+<div class="col-md-6">
+    <mat-card>
+<h4 style="text-align:center"> Bar chart of Company A&B
+    </h4><br/>
+  <div>
+    <div style="display: block">
+      <canvas baseChart
+              [datasets]="barChartData"
+              [labels]="mbarChartLabels"
+              [options]="barChartOptions"
+              [colors]="barChartColors"
+              [legend]="barChartLegend"
+              [chartType]="barChartType"
+              (chartHover)="chartHovered($event)"
+              (chartClick)="chartClicked($event)"></canvas>
+    </div>
+  </div>
+</mat-card>
+</div>
+</div>
+</div>
+  <div class="form_div p-4">
+      <h4>Form</h4>
+      <mat-card>
+          <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+              <div class="row">
+                  <div class="col-md-6">
+    <p>
+        <mat-form-field appearance="outline" class="width-100">
+          <mat-label>Name</mat-label>
+          <input matInput placeholder="Name" formControlName="name">
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="outline" class="width-100">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="Email" formControlName="email">
+        </mat-form-field>
+      </p>
+    </div>
+    <div class="col-md-6">
+      <p>
+        <mat-form-field appearance="outline" class="width-100">
+          <mat-label>Phone Number</mat-label>
+          <input matInput placeholder="Phone Number" formControlName="phoneNumber">
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="outline" class="width-100">
+            <mat-label>Favorite Subject</mat-label>
+            <mat-select formControlName="favoriteSubject">
+              <mat-option *ngFor="let subject of subjects" [value]="subject.value">
+                {{subject.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+      </p>
+    </div>
+    <div class="example-button-row pl-3 ">
+        <button mat-raised-button color="primary">Save</button>
+        </div>
+    </div>
+    </form>
+    </mat-card>
+  </div>
